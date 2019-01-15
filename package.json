@@ -1,0 +1,39 @@
+{
+  "name": "ew-erc-test-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/js/src/index.js",
+  "scripts": {
+    "test": "npm run prepare-wrapping && npm run build-ts && mocha dist/js/src/test/ --timeout 90000",
+    "build-ts": "rm -rf dist/js && node_modules/typescript/bin/tsc",
+    "prepare-wrapping": "rm -rf src/wrappedContracts && mkdir -p src/wrappedContracts && npm run compile && cp -R contract-build dist/ && node wrapping.js ",
+    "compile": "spm compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.slock.it/ewf/origin/user-registry/ew-user-registry-contracts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.0.0-beta.37",
+    "winston": "^3.0.0",
+    "yaeti": "^1.0.2",
+    "ew-deployment": "0.0.2-beta02"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.6.28",
+    "@types/web3": "^1.0.14",
+    "chai": "^4.1.2",
+    "ganache-cli": "^6.2.5",
+    "mocha": "^5.2.0",
+    "sloffle": "1.3.4-beta03",
+    "solc": "^0.4.23",
+    "tslint": "^5.11.0",
+    "typescript": "^2.9.2",
+    "typescript-json-schema": "^0.31.0"
+  },
+  "postinstall": "rm -f node_modules/web3/index.d.ts"
+}
