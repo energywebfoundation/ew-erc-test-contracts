@@ -7,7 +7,8 @@
     "test": "npm run prepare-wrapping && npm run build-ts && mocha dist/js/src/test/ --timeout 90000",
     "build-ts": "rm -rf dist/js && node_modules/typescript/bin/tsc",
     "prepare-wrapping": "rm -rf src/wrappedContracts && mkdir -p src/wrappedContracts && npm run compile && cp -R contract-build dist/ && node wrapping.js ",
-    "compile": "spm compile"
+    "compile": "spm compile",
+    "start-ganache": "ganache-cli -m 'chalk park staff buzz chair purchase wise oak receive avoid avoid home' -g 0 -l 80000000 -e 1000000 -a 20"
   },
   "repository": {
     "type": "git",
