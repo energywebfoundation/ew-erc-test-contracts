@@ -1,6 +1,7 @@
 import Web3 = require('web3');
-import { deploy } from 'ew-deployment';
+import { deploy } from 'ew-utils-deployment';
 import { TransactionReceipt } from 'web3/types';
+
 import { Erc20TestTokenJSON, Erc721TestReceiverJSON } from '..';
 
 export async function deployERC20TestToken(
