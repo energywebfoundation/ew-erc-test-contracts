@@ -14,7 +14,7 @@
 //
 // @authors: slock.it GmbH, Martin Kuechker, martin.kuechler@slock.it
 
-pragma solidity 0.5.2;
+pragma solidity ^0.5.2;
 
 import "../../contracts/Interfaces/ERC20Interface.sol";
 

@@ -14,7 +14,7 @@
 //
 // @authors: Martin Kuechler, martin.kuechler@slock.it
 
-pragma solidity 0.5.2;
+pragma solidity ^0.5.2;
 pragma experimental ABIEncoderV2;
 
 import "../../contracts/Interfaces/ERC721TokenReceiver.sol";
