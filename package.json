@@ -17,7 +17,7 @@
   "author": "slock.it GmbH; Martin Kuechler, martin.kuechler@slock.it; Heiko Burkhardt, heiko.burkhardt@slock.it",
   "license": "GPL-3.0",
   "dependencies": {
-    "ew-utils-deployment": "0.0.102",
+    "ew-utils-deployment": "0.3.0",
     "typedarray-to-buffer": "^3.1.5",
     "web3": "1.0.0-beta.37",
     "winston": "3.2.1",
@@ -27,7 +27,7 @@
     "@types/chai": "^4.1.4",
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.6.28",
-    "@types/web3": "^1.0.14",
+    "@types/web3": "1.0.14",
     "chai": "^4.1.2",
     "ganache-cli": "^6.2.5",
     "mocha": "^5.2.0",
