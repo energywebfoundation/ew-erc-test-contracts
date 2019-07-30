@@ -4,11 +4,14 @@
   "description": "",
   "main": "dist/js/src/index.js",
   "scripts": {
-    "test": "npm run prepare-wrapping && npm run build-ts && mocha dist/js/src/test/ --timeout 90000",
+    "compile": "truffle compile",
+    "deploy-contracts": "truffle migrate",
+    "test": "npm run build-ts && mocha dist/js/src/test/ --timeout 90000",
     "build-ts": "rm -rf dist/js && node_modules/typescript/bin/tsc",
-    "prepare-wrapping": "rm -rf src/wrappedContracts && mkdir -p src/wrappedContracts && npm run compile && cp -R contract-build dist/ && node wrapping.js ",
-    "compile": "spm compile",
-    "start-ganache": "ganache-cli -m 'chalk park staff buzz chair purchase wise oak receive avoid avoid home' -g 0 -l 80000000 -e 1000000 -a 20"
+    "start-ganache": "ganache-cli -m 'chalk park staff buzz chair purchase wise oak receive avoid avoid home' -l 8000000 -e 1000000 -a 20",
+    "prettier": "prettier --write --config-precedence file-override './src/**/*'",
+    "lint": "solium -d contracts && tslint 'src/**/*{.ts,.tsx}'",
+    "lint-fix": "solium -d contracts --fix && tslint --fix 'src/**/*{.ts,.tsx}'"
   },
   "repository": {
     "type": "git",
@@ -18,24 +21,27 @@
   "license": "GPL-3.0",
   "dependencies": {
     "ew-utils-deployment": "0.3.0",
-    "typedarray-to-buffer": "^3.1.5",
+    "typedarray-to-buffer": "3.1.5",
     "web3": "1.0.0-beta.37",
     "winston": "3.2.1",
-    "yaeti": "^1.0.2"
+    "yaeti": "1.0.2"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/mocha": "^2.2.48",
-    "@types/node": "^9.6.28",
+    "@types/chai": "4.1.4",
+    "@types/mocha": "2.2.48",
+    "@types/node": "9.6.28",
     "@types/web3": "1.0.14",
-    "chai": "^4.1.2",
-    "ganache-cli": "^6.2.5",
-    "mocha": "^5.2.0",
-    "sloffle": "1.3.4-beta03",
-    "solc": "^0.4.23",
-    "tslint": "^5.11.0",
-    "typescript": "^2.9.2",
-    "typescript-json-schema": "^0.31.0"
+    "chai": "4.1.2",
+    "ganache-cli": "6.2.5",
+    "mocha": "5.2.0",
+    "solium": "^1.2.4",
+    "truffle": "5.0.18",
+    "tslint": "5.16.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-lines-between-class-members": "1.3.1",
+    "tslint-sonarts": "1.9.0",
+    "typescript": "2.9.2",
+    "typescript-json-schema": "0.31.0"
   },
   "postinstall": "rm -f node_modules/web3/index.d.ts"
 }
