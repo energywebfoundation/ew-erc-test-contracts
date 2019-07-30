@@ -20,10 +20,7 @@ import "../../contracts/Interfaces/ERC20Interface.sol";
 
 contract Erc20TestToken is ERC20Interface {
 
-    string public symbol = "TTK";
-    string public name = "TestTokens";
-    uint8 public decimas = 18;
-    uint public totalSupplyNumber = 100000000000000000000; 
+    uint public totalSupplyNumber = 100000000000000000000;
     address public owner;
 
     mapping(address => uint) public balances;
@@ -33,14 +30,26 @@ contract Erc20TestToken is ERC20Interface {
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
 
     modifier onlyOwner() {
-        require(owner == msg.sender);
+        require(owner == msg.sender, "You are not the owner.");
         _;
     }
 
     constructor(address _testaccount) public {
         owner = msg.sender;
-        balances[owner] = totalSupplyNumber-1000000;
+        balances[owner] = totalSupplyNumber - 1000000;
         balances[_testaccount] = 1000000;
+    }
+
+    function name() public view returns (string memory) {
+        return "TestToken";
+    }
+
+    function symbol() public view returns (string memory) {
+        return "TTK";
+    }
+
+    function decimals() public view returns (uint8) {
+        return 18;
     }
 
     function totalSupply() public view returns (uint) {
@@ -55,22 +64,23 @@ contract Erc20TestToken is ERC20Interface {
         return allowed[_tokenOwner][_spender];
     }
 
-    function transfer(address _to, uint _tokens) public returns (bool){
-        if(balances[msg.sender] >= _tokens && _tokens >0 && balances[_to] + _tokens > balances[_to]) {
+    function transfer(address _to, uint _tokens) public returns (bool) {
+        if (balances[msg.sender] >= _tokens && _tokens > 0 && balances[_to] + _tokens > balances[_to]) {
             balances[msg.sender] -= _tokens;
             balances[_to] += _tokens;
             emit Transfer(msg.sender,_to, _tokens);
             return true;
         }
-        else return false;
+        return false;
     }
-    function approve(address _spender, uint _tokens) public returns (bool){
+
+    function approve(address _spender, uint _tokens) public returns (bool) {
         allowed[msg.sender][_spender] = _tokens;
         emit Approval(msg.sender, _spender, _tokens);
         return true;
     }
 
-    function transferFrom(address _from, address _to, uint _tokens) public returns (bool){
+    function transferFrom(address _from, address _to, uint _tokens) public returns (bool) {
         if (balances[_from] >= _tokens
             && allowed[_from][_to] >= _tokens
             && _tokens > 0
@@ -80,10 +90,8 @@ contract Erc20TestToken is ERC20Interface {
             balances[_to] += _tokens;
             emit Transfer(_from, _to, _tokens);
             return true;
-         } else {
-            return false;
-         }
+        }
+
+        return false;
     }
-
-
 }

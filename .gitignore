@@ -1,5 +1,3 @@
-solidity_modules
 node_modules
-src/wrappedContracts
 dist
-contract-build
+build/
