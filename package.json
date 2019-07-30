@@ -11,7 +11,8 @@
     "start-ganache": "ganache-cli -m 'chalk park staff buzz chair purchase wise oak receive avoid avoid home' -l 8000000 -e 1000000 -a 20",
     "prettier": "prettier --write --config-precedence file-override './src/**/*'",
     "lint": "solium -d contracts && tslint 'src/**/*{.ts,.tsx}'",
-    "lint-fix": "solium -d contracts --fix && tslint --fix 'src/**/*{.ts,.tsx}'"
+    "lint-fix": "solium -d contracts --fix && tslint --fix 'src/**/*{.ts,.tsx}'",
+    "prepare": "node scripts/build.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "@types/node": "9.6.28",
     "@types/web3": "1.0.14",
     "chai": "4.1.2",
+    "fs-extra": "8.0.1",
     "ganache-cli": "6.2.5",
     "mocha": "5.2.0",
     "solium": "^1.2.4",
